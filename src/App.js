@@ -1,23 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [selectedFile, setSelectedFile] = useState()
+  const [isFilePicked, setIsFilePicked] = useState(false)
+
+  const changeHandler = (event) => {
+    console.log('inside changeHandler')
+
+    setSelectedFile(event.target.files[0]);
+    setIsFilePicked(true);
+  } 
+
+  const submitHandle = () => {
+    console.log('inside submitHandle')
+  }
+
+  const renderFileInfo = () => {
+    if (isFilePicked) {
+      return (
+        <div>
+          <p>Filename: {selectedFile.name}</p>
+          <p>Filetype: {selectedFile.type}</p>
+        </div>
+      )
+    }
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="file" name="file" onChange={changeHandler} />
+      <div>
+        <button onClick={submitHandle}>
+          Submit!
+        </button>
+      </div>
+      { 
+        renderFileInfo()
+      }
     </div>
   );
 }
