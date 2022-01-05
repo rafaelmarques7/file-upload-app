@@ -8,9 +8,6 @@ AWS.config.update({
   region: 'eu-west-1'
 });
 
-// console.log(ACCESS_KEY, SECRET_KEY)
-
-
 
 function App() {
   const [selectedFile, setSelectedFile] = useState()
@@ -33,12 +30,10 @@ function App() {
     }
 
     try {
-      // const res = await new AWS.S3().listObjects(params).promise()
-
       const res = await new AWS.S3().putObject(params).promise()
       console.log('Success uploading data: ', res)
     } catch (e) {
-      console.error(`Error uploading data. Parmams: ${JSON.stringify(params)}`)
+      console.error(`Error uploading data. Params: ${JSON.stringify(params)}`)
       console.error(e)
     }
   }
