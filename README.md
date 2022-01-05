@@ -6,11 +6,11 @@ This is a sample project to experiment with file uploading using React and S3.
 
 ## AWS Authentication
 
-* This project uses a very naive way to authenticate with S3.
-* It requires an ACCESS_KEY AND SECRET_KEY, to an AWS IAM user with privileges to write to the respective S3 bucket.
-* These values should be stored in a `src/secrets.js` file. 
-  * this file is `.gitignore`'d.
-  * in any case, **this is a somewhat unsafe** way of doing this, so **do it at your own risk**. 
+* This project uses a very naive way to authenticate with S3
+* It requires an `ACCESS_KEY` and `SECRET_KEY`, to an AWS IAM user with privileges to write to the respective S3 bucket
+* These values should be stored and exported in a `src/secrets.js` file. 
+  * this file is `.gitignore`'d
+  * in any case, **this is a somewhat unsafe** way of doing this, so **do it at your own risk**
   
 --- 
 
