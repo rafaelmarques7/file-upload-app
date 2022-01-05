@@ -1,4 +1,16 @@
 import { useState } from 'react';
+import { ACCESS_KEY, SECRET_KEY, BUCKET } from './secrets'
+
+const AWS = require('aws-sdk');
+AWS.config.update({
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_KEY,
+  region: 'eu-west-1'
+});
+
+// console.log(ACCESS_KEY, SECRET_KEY)
+
+
 
 function App() {
   const [selectedFile, setSelectedFile] = useState()
@@ -11,8 +23,24 @@ function App() {
     setIsFilePicked(true);
   } 
 
-  const submitHandle = () => {
+  const  submitHandle = async () => {
     console.log('inside submitHandle')
+
+    const params = {
+      Bucket: BUCKET,
+      Key: selectedFile.name,
+      Body: selectedFile,
+    }
+
+    try {
+      // const res = await new AWS.S3().listObjects(params).promise()
+
+      const res = await new AWS.S3().putObject(params).promise()
+      console.log('Success uploading data: ', res)
+    } catch (e) {
+      console.error(`Error uploading data. Parmams: ${JSON.stringify(params)}`)
+      console.error(e)
+    }
   }
 
   const renderFileInfo = () => {
