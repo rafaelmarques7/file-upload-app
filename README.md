@@ -41,3 +41,30 @@ This is a sample project to experiment with file uploading using React and S3.
     ```
 
 ---
+
+## Uploading multiple files
+
+* It is possible to configure the `input` form to accept single and multiple files OR to accept a folder upload.
+* It is not possible to accept both file input as well as folder inputs (at least not without some hacks).
+
+That is, you can use:
+* single file upload:
+    ```html
+    <input type="file" onChange={changeHandler} />
+    ```
+* single and multiple file upload:
+    ```html
+    <input multiple type="file" onChange={changeHandler} />
+    ```
+* directory upload (but NOT file upload)
+    ```html
+    <input type="file" webkitdirectory="true" directory="true" onChange={changeHandler} />
+    ```
+
+
+
+---
+
+## References
+
+* Project partly inspired by: https://www.pluralsight.com/guides/uploading-files-with-reactjs

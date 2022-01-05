@@ -15,6 +15,7 @@ function App() {
 
   const changeHandler = (event) => {
     console.log('inside changeHandler')
+    console.log('event: ', event)
 
     setSelectedFile(event.target.files[0]);
     setIsFilePicked(true);
@@ -52,7 +53,7 @@ function App() {
 
   return (
     <div className="App">
-      <input type="file" name="file" onChange={changeHandler} />
+      <input multiple type="file" onChange={changeHandler} />
       <div>
         <button onClick={submitHandle}>
           Submit!
